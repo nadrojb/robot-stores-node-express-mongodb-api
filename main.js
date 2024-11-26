@@ -28,5 +28,38 @@ app.get("/products", async (req, res) => {
     });
   }
 });
+app.get("/characters", async (req, res) => {
+  try {
+    const connection = await MongoClient.connect(url);
+
+    const db = connection.db("robot_stores");
+    const collection = db.collection.distinct("products");
+
+    const character = await collection.distinct("character");
+
+    res.status(200).json(character);
+  } catch (error) {
+    res.status(500).json({
+      message: { message: "Unexpected error", data: [] },
+    });
+  }
+});
+
+app.get("/categories", async (req, res) => {
+  try {
+    const connection = await MongoClient.connect(url);
+
+    const db = connection.db("robot_stores");
+    const collection = db.collection.distinct("products");
+
+    const category = await collection.distinct("category");
+
+    res.status(200).json(category);
+  } catch (error) {
+    res.status(500).json({
+      message: { message: "Unexpected error", data: [] },
+    });
+  }
+});
 
 app.listen(port);
