@@ -42,7 +42,7 @@ app.get("/products/:id", async (req, res) => {
     res.status(200).json(product);
   } catch (error) {
     res.status(500).json({
-      message: { message: "Unexpected error", data: [] },
+      message: { message: "Unknown product ID", data: [] },
     });
   }
 });
