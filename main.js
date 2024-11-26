@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 
 const app = express();
 const port = 3004;
@@ -28,6 +28,25 @@ app.get("/products", async (req, res) => {
     });
   }
 });
+
+app.get("/products/:id", async (req, res) => {
+  try {
+    const productId = new ObjectId(req.params.id);
+    const connection = await MongoClient.connect(url);
+
+    const db = connection.db("robot_stores");
+    const collection = db.collection("products");
+
+    const product = await collection.findOne({ _id: productId });
+
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({
+      message: { message: "Unexpected error", data: [] },
+    });
+  }
+});
+
 app.get("/characters", async (req, res) => {
   try {
     const connection = await MongoClient.connect(url);
