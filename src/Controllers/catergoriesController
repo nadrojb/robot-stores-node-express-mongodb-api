@@ -1,4 +1,4 @@
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 const url = "mongodb://root:password@localhost:27017";
 
 const categories = async (req, res) => {
@@ -8,11 +8,11 @@ const categories = async (req, res) => {
     const db = connection.db("robot_stores");
     const collection = db.collection("products");
 
-    const category = await collection.find("category");
+    const categories = await collection.distinct("category");
 
     res.status(200).json({
       message: "Successfully found categories.",
-      data: category,
+      data: categories,
     });
   } catch (error) {
     res.status(500).json({
