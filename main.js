@@ -22,36 +22,34 @@ app.get("/categories", categories);
 app.get("/characters", characters);
 
 app.post("/add", async (req, res) => {
-  const dataToInsert = req.body;
-  // do some validation here
-  const validated = {
-    title: "hat",
-    price: "24",
-    category: "aprons",
-    character: "rex",
-  };
-
-  if (!validated) {
-    return res.status(400).json({ message: "Invalid data." });
-  }
-
-  try {
-    const connection = await MongoClient.connect(mongourl);
-    const result = await connection
-      .db("robot_stores")
-      .collection("products")
-      .insertOne(validatedDataToInsert);
-
-    if (result.insertedId !== null) {
-      return res.status(201).json({ message: "Success!" });
-    } else {
-      return res.status(400).json({ message: "Unable to insert." });
-    }
-  } catch (error) {
-    return res
-      .status(500)
-      .json({ message: "Something went wrong!", error: error });
-  }
-});
+    const createProduct = async (req, res) => {
+        const dataToInsert = req.body;
+        
+        let validated = {}
+        let dataOk = true;
+        
+        if (isString(dataToInsert.title)) {
+            validated.title = dataToInsert.title
+        } else {
+            dataOk = false;
+        }
+    
+        if (isNumber(dataToInsert.price)) {
+            validated.price = Number(dataToInsert.price)
+        } else {
+            dataOk = false;
+        }
+    
+        if (isURL(dataToInsert.image)) {
+            validated.image = dataToInsert.image
+        } else {
+            dataOk = false;
+        }
+        // the rest
+        
+        if (!dataOK) {
+            return res.status(400).json({message: 'Invalid data.', error: error.message})
+        }
+}});
 
 app.listen(port);
