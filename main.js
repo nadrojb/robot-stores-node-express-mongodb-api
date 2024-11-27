@@ -10,10 +10,8 @@ const url = "mongodb://root:password@localhost:27017";
 const app = express();
 const port = 3001;
 
-
 app.use(express.json());
 app.use(cors());
-
 
 app.get("/products", allProducts);
 
@@ -23,37 +21,37 @@ app.get("/categories", categories);
 
 app.get("/characters", characters);
 
-// app.post('/add', async (req, res) => {
-//     const dataToInsert = req.body;
-//     // do some validation here
-//     const validated = {
-//         title: dataToInsert.title
-//         price: dataToInsert.price
-//         category: dataToInsert.category
-//         character: dataToInsert.character
-//         title: dataToInsert.title
-//         title: dataToInsert.title
-//     };
+app.post("/add", async (req, res) => {
+  const dataToInsert = req.body;
+  // do some validation here
+  const validated = {
+    title: "hat",
+    price: "24",
+    category: "aprons",
+    character: "rex",
+  };
 
-//     if (!validated) {
-//         return res.status(400).json({message: 'Invalid data.'})
-//     }
+  if (!validated) {
+    return res.status(400).json({ message: "Invalid data." });
+  }
 
-//     try {
-//         const connection = await MongoClient.connect(mongourl);
-//         const result = await connection
-//             .db('robot_stores')
-//             .collection('people')
-//             .insertOne(validatedDataToInsert);
+  try {
+    const connection = await MongoClient.connect(mongourl);
+    const result = await connection
+      .db("robot_stores")
+      .collection("products")
+      .insertOne(validatedDataToInsert);
 
-//         if (result.insertedId !== null) {
-//             return res.status(201).json({message: 'Success!'})
-//         } else {
-//             return res.status(400).json({message: 'Unable to insert.'})
-//         }
-//     } catch (error) {
-//         return res.status(500).json({message: 'Something went wrong!', error: error})
-//     }
-// });
+    if (result.insertedId !== null) {
+      return res.status(201).json({ message: "Success!" });
+    } else {
+      return res.status(400).json({ message: "Unable to insert." });
+    }
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ message: "Something went wrong!", error: error });
+  }
+});
 
 app.listen(port);
