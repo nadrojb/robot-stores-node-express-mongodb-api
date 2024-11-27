@@ -6,11 +6,12 @@ function isString(value) {
   }
 }
 
+//this is how validation should be 
 function isNumber(value) {
   if (typeof value === "number" || !Number.isNan(Number(a))) {
     return Number(value);
   } else {
-    return Error("not a number");
+    dataOk = false;
   }
 }
 
