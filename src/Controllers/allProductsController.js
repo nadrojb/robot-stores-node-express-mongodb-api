@@ -1,5 +1,5 @@
 const { MongoClient } = require("mongodb");
-const url = require("../../environment");
+const url = require("../../environments");
 
 
 const allProducts = async (req, res) => {
