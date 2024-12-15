@@ -1,207 +1,244 @@
-Return all products
-URL
+## API documentation
 
-/products
+### Return all products
 
-Method:
+* **URL**
 
-GET
+  /products
 
-URL Params
+* **Method:**
 
-Required:
+  `GET`
 
-There are no required URL params
+* **URL Params**
 
-Success Response:
+  **Required:**
 
-Code: 200
-Content:
-{
-"message": "Successfully found products.",
-"data": [
+  There are no required URL params
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:** <br />
+
+  ```json
   {
-    "_id": "63a06c1f39e63776d2b2809f",
-    "title": "It's All 0's and 1's to Me! Apron",
-    "price": 24,
-    "image": "https://binaryville.com/images/products/fred-0s1s-apron-black.jpg",
-    "category": "Aprons",
-    "character": "Fred"
-  },
-  {
-    "_id": "63a06c1f39e63776d2b280a0",
-    "title": "I Compute, Therefore I Am Apron",
-    "price": 24,
-    "image": "https://binaryville.com/images/products/dolores-compute-apron-black.jpg",
-    "category": "Aprons",
-    "character": "Dolores"
+  "message": "Successfully found products.",
+  "data": [
+    {
+      "_id": "63a06c1f39e63776d2b2809f",
+      "title": "It's All 0's and 1's to Me! Apron",
+      "price": 24,
+      "image": "https://binaryville.com/images/products/fred-0s1s-apron-black.jpg",
+      "category": "Aprons",
+      "character": "Fred"
+    },
+    {
+      "_id": "63a06c1f39e63776d2b280a0",
+      "title": "I Compute, Therefore I Am Apron",
+      "price": 24,
+      "image": "https://binaryville.com/images/products/dolores-compute-apron-black.jpg",
+      "category": "Aprons",
+      "character": "Dolores"
+    }
+  ]
   }
-]
-}
-Error Response:
+  ```
 
-Code: 500 SERVER ERROR
-Content: {"message": "Unexpected error", "data": []}
-Return specific product
-URL
+* **Error Response:**
+  
+    * **Code:** 500 SERVER ERROR <br />
+      **Content:** `{"message": "Unexpected error", "data": []}`
 
-/products/{id}
+### Return specific product
 
-Method:
+* **URL**
 
-GET
+  /products/{id}
 
-URL Params
+* **Method:**
 
-Required:
+  `GET`
 
-There are no required URL params
+* **URL Params**
 
-Optional:
+  **Required:**
 
-There are no optional URL params
+  There are no required URL params
 
-Example:
+  **Optional:**
 
-/products/63a06c1f39e63776d2b280a0
+  There are no optional URL params
 
-Success Response:
+  **Example:**
 
-Code: 200
-Content:
-{
-"message": "Successfully found product.",
-"data": 
+  `/products/63a06c1f39e63776d2b280a0`
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:** <br />
+
+  ```json
   {
-    "_id": "63a06c1f39e63776d2b2809f",
-    "title": "I Compute, Therefore I Am Baseball Hat",
-    "price": 29,
-    "image": "https://binaryville.com/images/products/dolores-compute-baseballhat-black.jpg",
-    "category": "Baseball Hats",
-    "character": "Dolores",
-    "description": "Cheer the team on in style with our unstructured, low crown, six-panel baseball cap made of 100% organic cotton twill. Featuring our original Binaryville artwork, screen-printed with PVC- and phthalate-free inks. Complete with matching, sewn eyelets, and adjustable fabric closure. ",
-    "image2": "https://binaryville.com/images/products/dolores-compute-baseballhat-gray.jpg",
-    "image3": "NULL"
+  "message": "Successfully found product.",
+  "data": 
+    {
+      "_id": "63a06c1f39e63776d2b2809f",
+      "title": "I Compute, Therefore I Am Baseball Hat",
+      "price": 29,
+      "image": "https://binaryville.com/images/products/dolores-compute-baseballhat-black.jpg",
+      "category": "Baseball Hats",
+      "character": "Dolores",
+      "description": "Cheer the team on in style with our unstructured, low crown, six-panel baseball cap made of 100% organic cotton twill. Featuring our original Binaryville artwork, screen-printed with PVC- and phthalate-free inks. Complete with matching, sewn eyelets, and adjustable fabric closure. ",
+      "image2": "https://binaryville.com/images/products/dolores-compute-baseballhat-gray.jpg",
+      "image3": "NULL"
+    }
   }
-}
-Error Response:
+  ```
 
-Code: 400 BAD REQUEST
-Content: {"message": "Unknown product ID", "data": []}
+* **Error Response:**
 
-Code: 500 SERVER ERROR
-Content: {"message": "Unexpected error", "data": []}
+    * **Code:** 400 BAD REQUEST <br />
+      **Content:** `{"message": "Unknown product ID", "data": []}`
 
-Return all characters
-URL
+    * **Code:** 500 SERVER ERROR <br />
+      **Content:** `{"message": "Unexpected error", "data": []}`
 
-/characters
+### Return all characters
 
-Method:
+* **URL**
 
-GET
+  /characters
 
-URL Params
+* **Method:**
 
-Required:
+  `GET`
 
-There are no required URL params
+* **URL Params**
 
-Success Response:
+  **Required:**
 
-Code: 200
-Content:
-{
-"message": "Successfully found characters.",
-"data": [
-  "Fred","Dolores","Bubbles","Rex"
-]
-}
-Error Response:
+  There are no required URL params
 
-Code: 500 SERVER ERROR
-Content: {"message": "Unexpected error", "data": []}
-Return all categories
-URL
+* **Success Response:**
 
-/categories
+  * **Code:** 200 <br />
+    **Content:** <br />
 
-Method:
+  ```json
+  {
+  "message": "Successfully found characters.",
+  "data": [
+    "Fred","Dolores","Bubbles","Rex"
+  ]
+  }
+  ```
 
-GET
+* **Error Response:**
 
-URL Params
+  * **Code:** 500 SERVER ERROR <br />
+    **Content:** `{"message": "Unexpected error", "data": []}`
 
-Required:
 
-There are no required URL params
+### Return all categories
 
-Success Response:
+* **URL**
 
-Code: 200
-Content:
-{
-"message": "Successfully found categories.",
-"data": [
-  "Aprons","Baseball Hats","Mugs","T-shirts"
-]
-}
-Error Response:
+  /categories
 
-Code: 500 SERVER ERROR
-Content: {"message": "Unexpected error", "data": []}
-Add new product - STRETCH GOAL
-URL
+* **Method:**
 
-/products
+  `GET`
 
-Method:
+* **URL Params**
 
-POST
+  **Required:**
 
-URL Params
+  There are no required URL params
 
-Required:
+* **Success Response:**
 
-There are no required URL params
+  * **Code:** 200 <br />
+    **Content:** <br />
 
-Optional:
+  ```json
+  {
+  "message": "Successfully found categories.",
+  "data": [
+    "Aprons","Baseball Hats","Mugs","T-shirts"
+  ]
+  }
+  ```
 
-There are no optional URL params
+* **Error Response:**
 
-Body Data
+  * **Code:** 500 SERVER ERROR <br />
+    **Content:** `{"message": "Unexpected error", "data": []}`
 
-Must be sent as JSON with the correct headers
+### Add new product - STRETCH GOAL
 
-Required:
+* **URL**
 
-{
-  "title": "String",
-  "price": Number,
-  "image": "URL string",
-  "category": "String",
-  "character": "String",
-  "description": "String"
-}
-Optional:
+  /products
 
-{
-  "image2": "URL string"|null,
-  "image3": "URL string"|null
-}
-Example:
+* **Method:**
 
-/products
+  `POST`
 
-Success Response:
+* **URL Params**
 
-Code: 201 CREATED
-Content:
-{"message": "Successfully created product."}
-Error Response:
+  **Required:**
 
-Code: 400 BAD REQUEST
-Content: {"message": "Invalid product data", "data": []}
+  There are no required URL params
 
-Code: 500 SERVER ERROR
-Content: {"message": "Unexpected error", "data": []}
+  **Optional:**
+
+  There are no optional URL params
+
+* **Body Data**
+
+  Must be sent as JSON with the correct headers
+
+  **Required:**
+
+    ```json
+    {
+      "title": "String",
+      "price": Number,
+      "image": "URL string",
+      "category": "String",
+      "character": "String",
+      "description": "String"
+    }
+    ```
+
+  **Optional:**
+
+    ```json
+    {
+      "image2": "URL string"|null,
+      "image3": "URL string"|null
+    }
+    ```
+
+  **Example:**
+
+  `/products`
+
+* **Success Response:**
+
+    * **Code:** 201 CREATED <br />
+      **Content:** <br />
+
+  ```json
+  {"message": "Successfully created product."}
+  ```
+
+* **Error Response:**
+
+    * **Code:** 400 BAD REQUEST <br />
+      **Content:** `{"message": "Invalid product data", "data": []}`
+
+    * **Code:** 500 SERVER ERROR <br />
+      **Content:** `{"message": "Unexpected error", "data": []}`
