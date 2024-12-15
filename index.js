@@ -5,7 +5,7 @@ const allProducts = require("./src/Controllers/allProductsController");
 const singleProduct = require("./src/Controllers/singleProductController");
 const categories = require("./src/Controllers/catergoriesController");
 const characters = require("./src/Controllers/charactersController");
-const url = "mongodb://root:password@localhost:27017";
+
 
 const app = express();
 const port = 3001;
