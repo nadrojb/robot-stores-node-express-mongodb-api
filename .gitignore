@@ -1,4 +1,4 @@
 node_modules
 .idea
 environments.js
-packa
+package-lock.json
